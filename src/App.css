@@ -1,22 +1,41 @@
 .App {
-  text-align: center;
+  margin-left: 700px;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
   color: #09d3ac;
+}
+
+
+.NamesBlock span{
+  background-color: honeydew;
+}
+.names{
+  margin-right: 100px;
+}
+.colorTextForAll{
+color: darkgoldenrod;
+}
+.colorTextForCompleted{
+  color: chartreuse;
+}
+.colorTextForActive{
+  color: blue;
+}
+
+
+.buttonColorAll{
+  background-color: blue;
+  color: lightcyan;
+}
+
+.buttonColorCompleted{
+  background-color: darkkhaki;
+  color: firebrick;
+}
+
+.buttonColorActive{
+  background-color: deepskyblue;
+  color: gray;
 }

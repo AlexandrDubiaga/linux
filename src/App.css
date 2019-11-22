@@ -1,41 +1,42 @@
 .App {
-  margin-left: 700px;
+    margin-left: 700px;
 }
-
 
 .App-link {
-  color: #09d3ac;
+    color: #09d3ac;
+}
+
+.NamesBlock span {
+    background-color: honeydew;
+}
+.NamesBlock{
+  width: 300px;
 }
 
 
-.NamesBlock span{
-  background-color: honeydew;
-}
-.names{
-  margin-right: 100px;
-}
-.colorTextForAll{
-color: darkgoldenrod;
-}
-.colorTextForCompleted{
-  color: chartreuse;
-}
-.colorTextForActive{
-  color: blue;
+.colorTextForAll {
+    color: darkgoldenrod;
 }
 
-
-.buttonColorAll{
-  background-color: blue;
-  color: lightcyan;
+.colorTextForCompleted {
+    color: chartreuse;
 }
 
-.buttonColorCompleted{
-  background-color: darkkhaki;
-  color: firebrick;
+.colorTextForActive {
+    color: blue;
 }
 
-.buttonColorActive{
-  background-color: deepskyblue;
-  color: gray;
+.buttonColorAll {
+    background-color: blue;
+    color: lightcyan;
+}
+
+.buttonColorCompleted {
+    background-color: darkkhaki;
+    color: firebrick;
+}
+
+.buttonColorActive {
+    background-color: deepskyblue;
+    color: gray;
 }

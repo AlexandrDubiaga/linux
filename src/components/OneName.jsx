@@ -4,6 +4,7 @@ class OneName extends React.Component {
     constructor() {
         super()
     }
+
     check = (e) => {
         this.props.checkChecked(this.props.name, e.currentTarget.checked)
     }
@@ -16,7 +17,7 @@ class OneName extends React.Component {
             return 'colorTextForActive';
         }
     }
-    deleteFormTodoList=()=>{
+    deleteFormTodoList = () => {
         this.props.deleteName(this.props.name);
     }
 
@@ -24,9 +25,10 @@ class OneName extends React.Component {
         return (
             <div className="HeaderWrapper">
                 <div className="NamesBlock">
-                    <span className={this.changeColorText()}><input onChange={this.check}
+                    <span ><input onChange={this.check}
                                                                     checked={this.props.name.isDone ? true : false}
-                                                                    type="checkbox"/> </span><span className="names">{this.props.name.title}</span><button onClick={this.deleteFormTodoList}>DELETE</button>
+                                                                    type="checkbox"/> </span><span className={this.changeColorText()} >{this.props.name.title}</span>
+                    <span className="buttonAddTask"><button onClick={this.deleteFormTodoList}>DELETE</button></span>
                 </div>
             </div>
         );

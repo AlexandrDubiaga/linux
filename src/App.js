@@ -3,21 +3,23 @@ import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NamesList from "./components/NamesList";
+import store from "./state/state";
 
 class App extends React.Component {
-
-    state = {
-        names: [{id: 1, title: 'Solmir__', isDone: false},
-            {id: 2, title: 'Hworang', isDone: true},
-            {id: 3, title: 'Triton', isDone: false},
-            {id: 4, title: 'Eddy Codo', isDone: true}],
-        filterValue: "All"
+    constructor() {
+        super();
+        this.state = store.state;
     }
 
     addNewName = (newName) => {
         let newname = {id: 4, title: newName, isDone: true};
         this.setState({
             names: [...this.state.names, newname]
+        })
+    }
+    addNewText = (newText) => {
+        this.setState({
+            newText: newText
         })
     }
 
@@ -51,9 +53,9 @@ class App extends React.Component {
             names: newNamesArray
         })
     }
-    deleteName=(name)=>{
-        let newState = this.state.names.filter(n=>{
-            return n!==name;
+    deleteName = (name) => {
+        let newState = this.state.names.filter(n => {
+            return n !== name;
         })
         this.setState({
             names: newState
@@ -61,11 +63,11 @@ class App extends React.Component {
     }
 
     render() {
-        debugger
         return (
             <div className="App">
-                <Header addNewName={this.addNewName}/>
-                <NamesList filterValue={this.state.filterValue} deleteName={this.deleteName} names={this.filternames()} checkChecked={this.checkChecked} />
+                <Header addNewName={this.addNewName} addNewText={this.addNewText} newText={this.state.newText}/>
+                <NamesList filterValue={this.state.filterValue} deleteName={this.deleteName} names={this.filternames()}
+                           checkChecked={this.checkChecked}/>
                 <Footer changeButtonColor={this.changeButtonColor} filterValue={this.state.filterValue}/>
             </div>
         );

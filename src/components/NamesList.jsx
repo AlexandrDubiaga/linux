@@ -11,7 +11,8 @@ class NamesList extends React.Component {
             <div>
                 {this.props.names.map(n => <OneName name={n} filterValue={this.props.filterValue}
                                                     deleteName={this.props.deleteName}
-                                                    checkChecked={this.props.checkChecked}/>)}
+                                                    checkChecked={this.props.checkChecked}
+                                                    updateName={this.props.updateName}/>)}
             </div>
         );
     }

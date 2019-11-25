@@ -1,42 +1,18 @@
 .App {
-    margin-left: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.wrapper{
+    margin: 0 auto;
+    background-color: aqua;
+    padding: 50px;
+}
+.main{
+    display: flex;
+
+    flex-direction: row;
 }
 
-.App-link {
-    color: #09d3ac;
-}
 
-.NamesBlock span {
-    background-color: honeydew;
-}
-.NamesBlock{
-  width: 300px;
-}
-
-
-.colorTextForAll {
-    color: darkgoldenrod;
-}
-
-.colorTextForCompleted {
-    color: chartreuse;
-}
-
-.colorTextForActive {
-    color: blue;
-}
-
-.buttonColorAll {
-    background-color: blue;
-    color: lightcyan;
-}
-
-.buttonColorCompleted {
-    background-color: darkkhaki;
-    color: firebrick;
-}
-
-.buttonColorActive {
-    background-color: deepskyblue;
-    color: gray;
-}

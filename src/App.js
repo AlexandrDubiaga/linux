@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import NamesList from "./components/NamesList";
 import store from "./state/state";
+import Header from "./components/Header";
+import HumansList from "./components/HumansList";
 
 class App extends React.Component {
     constructor() {
@@ -11,79 +10,32 @@ class App extends React.Component {
         this.state = store.state;
     }
 
-    addNewName = (newName) => {
-        let newname = {id: 4, title: newName, isDone: true};
+    addNewHumanData = (dataHuman) => {
         this.setState({
-            names: [...this.state.names, newname]
+            peoples: [...this.state.peoples, {name:dataHuman.name,isChecked:dataHuman.isChecked}]
         })
     }
-    addNewText = (newText) => {
-        this.setState({
-            newText: newText
-        })
+    getStatePeoples=()=>{
+        return this.state.peoples
     }
 
-    changeButtonColor = (newValueFromButton) => {
-        this.setState({
-            filterValue: newValueFromButton
-        })
-    }
-
-    filternames = () => {
-        return this.state.names.filter(n => {
-            if (this.state.filterValue === 'All') {
-                return true;
-            } else if (this.state.filterValue === 'Completed') {
-                return n.isDone;
-            } else {
-                return !n.isDone;
-            }
-        })
-    }
-
-    checkChecked = (name, isChecked) => {
-        let newNamesArray = this.state.names.map(currentName => {
-            if (name !== currentName) {
-                return currentName
-            } else {
-                return {...currentName, isDone: isChecked}
-            }
+    changeIsChecked=(humen,isChecked)=>{
+        let newState = this.state.peoples.map(h=>{
+            if(humen!=h){
+                return h
+            }else return {...h,isChecked:isChecked}
         })
         this.setState({
-            names: newNamesArray
+           peoples:newState
         })
     }
-    updateName=(name,title)=>{
-      let newNamesArray =  this.state.names.map(currentName=>{
-           if(currentName!=name){
-               return currentName;
-           }else{
-               debugger
-               return {...currentName,title:title}
-           }
-       })
-        this.setState({
-            names: newNamesArray
-        })
-    }
-
-    deleteName = (name) => {
-        let newState = this.state.names.filter(n => {
-            return n !== name;
-        })
-        this.setState({
-            names: newState
-        })
-
-    }
-
     render() {
         return (
             <div className="App">
-                <Header addNewName={this.addNewName} addNewText={this.addNewText} newText={this.state.newText}/>
-                <NamesList updateName={this.updateName} filterValue={this.state.filterValue} deleteName={this.deleteName} names={this.filternames()}
-                           checkChecked={this.checkChecked}/>
-                <Footer changeButtonColor={this.changeButtonColor} filterValue={this.state.filterValue}/>
+                <div className="wrapper">
+                    <div>  <Header addNewHumanData={this.addNewHumanData}/></div>
+                    <div><HumansList changeIsChecked={this.changeIsChecked} peoples={this.getStatePeoples()} /></div>
+                </div>
             </div>
         );
     }

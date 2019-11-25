@@ -20,6 +20,7 @@ class App extends React.Component {
     }
 
     changeIsChecked=(humen,isChecked)=>{
+        debugger
         let newState = this.state.peoples.map(h=>{
             if(humen!=h){
                 return h
@@ -37,12 +38,23 @@ class App extends React.Component {
             peoples:newState
         })
     }
+
+    updateName=(human,name)=>{
+        let newState = this.state.peoples.map(h=>{
+            if(human!=h){
+                return h
+            }else return {...h,name:name}
+        })
+        this.setState({
+            peoples:newState
+        })
+    }
     render() {
         return (
             <div className="App">
                 <div className="wrapper">
                     <div>  <Header addNewHumanData={this.addNewHumanData}/></div>
-                    <div><HumansList deleteName={this.deleteName} changeIsChecked={this.changeIsChecked} peoples={this.getStatePeoples()} /></div>
+                    <div><HumansList updateName={this.updateName} deleteName={this.deleteName} changeIsChecked={this.changeIsChecked} peoples={this.getStatePeoples()} /></div>
                 </div>
             </div>
         );

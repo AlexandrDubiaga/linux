@@ -31,6 +31,7 @@ class Header extends React.Component {
                     <form onChange={this.updateData}>
                         <input checked={this.state.isChecked ? true : false} type="checkbox" name="checked"/>
                         <input value={this.state.name} name="name"/>
+                        
                     </form>
                 </div>
                 <div>

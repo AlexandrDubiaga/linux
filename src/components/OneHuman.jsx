@@ -4,10 +4,13 @@ class OneHuman extends React.Component {
         debugger
         this.props.changeIsChecked(this.props.human,e.currentTarget.checked)
     }
+    deleteName=()=>{
+        this.props.deleteName(this.props.human);
+    }
     render() {
         return (
             <div>
-                <input type="checkbox" onChange={this.updateIsChecked} checked={this.props.human.isChecked?true:false}/>{this.props.human.name}
+                <button onClick={this.deleteName}>X</button><input type="checkbox" onChange={this.updateIsChecked} checked={this.props.human.isChecked?true:false}/>{this.props.human.name}
             </div>
         )
     }

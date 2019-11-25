@@ -14,7 +14,7 @@ class Header extends React.Component {
     }
     addNewHuman = (data) => {
         if(this.state.name===''){
-            this.state.name='--------'
+            this.state.name='--------';
         }
         let isChecked = this.state.isChecked;
         let humanName = this.state.name;

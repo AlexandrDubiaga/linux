@@ -29,12 +29,20 @@ class App extends React.Component {
            peoples:newState
         })
     }
+    deleteName=(name)=>{
+       let newState =  this.state.peoples.filter(n=>{
+            return n!=name
+        })
+        this.setState({
+            peoples:newState
+        })
+    }
     render() {
         return (
             <div className="App">
                 <div className="wrapper">
                     <div>  <Header addNewHumanData={this.addNewHumanData}/></div>
-                    <div><HumansList changeIsChecked={this.changeIsChecked} peoples={this.getStatePeoples()} /></div>
+                    <div><HumansList deleteName={this.deleteName} changeIsChecked={this.changeIsChecked} peoples={this.getStatePeoples()} /></div>
                 </div>
             </div>
         );

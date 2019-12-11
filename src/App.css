@@ -1,18 +1,8 @@
 .App {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-}
-.wrapper{
-    margin: 0 auto;
-    background-color: aqua;
-    padding: 50px;
-}
-.main{
-    display: flex;
-
-    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-
+.wrapper {
+width: 300px;
+}

@@ -1,62 +1,61 @@
 import React from 'react';
 import './App.css';
-import store from "./state/state";
-import Header from "./components/Header";
-import HumansList from "./components/HumansList";
+import TodoList from "./components/TodoList";
+import AddNewItemForm from "./components/AddNewItemForm";
+
 
 class App extends React.Component {
-    constructor() {
-        super();
-        this.state = store.state;
+    state = {
+        todoList: [{id: 1, title: 'first'}]
     }
 
-    addNewHumanData = (dataHuman) => {
-        this.setState({
-            peoples: [...this.state.peoples, {name:dataHuman.name,isChecked:dataHuman.isChecked}]
-        })
-    }
-    getStatePeoples=()=>{
-        return this.state.peoples
-    }
-
-    changeIsChecked=(humen,isChecked)=>{
-        debugger
-        let newState = this.state.peoples.map(h=>{
-            if(humen!=h){
-                return h
-            }else return {...h,isChecked:isChecked}
-        })
-        this.setState({
-           peoples:newState
-        })
-    }
-    deleteName=(name)=>{
-       let newState =  this.state.peoples.filter(n=>{
-            return n!=name
-        })
-        this.setState({
-            peoples:newState
-        })
+    componentDidMount() {
+        let todolist = JSON.parse(localStorage.getItem('newTodolist'));
+        if (localStorage.getItem('newTodolist')) {
+            todolist.todoList.forEach(currentTodolist => {
+                if (currentTodolist.id >= this.nextId) {
+                    this.nextId = currentTodolist.id + 1
+                }
+            })
+            this.setState({
+                todoList: todolist.todoList
+            })
+        } else {
+            this.setState({
+                todoList: [{id: 1, title: 'first'}],
+            })
+        }
     }
 
-    updateName=(human,name)=>{
-        let newState = this.state.peoples.map(h=>{
-            if(human!=h){
-                return h
-            }else return {...h,name:name}
-        })
+
+    componentWillUpdate(nextProps, nextState) {
+        localStorage.setItem('newTodolist', JSON.stringify(nextState));
+    }
+
+    nextId = 2;
+    addNewTodolist = (newTodolist) => {
+        let newTodo = {
+            id: this.nextId,
+            title: newTodolist
+        }
+        this.nextId++
         this.setState({
-            peoples:newState
+            todoList: [...this.state.todoList, newTodo]
         })
     }
+
+
     render() {
+        let todolist = this.state.todoList.map(t => <TodoList id={t.id} title={t.title}/>)
         return (
-            <div className="App">
-                <div className="wrapper">
-                    <div>  <Header addNewHumanData={this.addNewHumanData}/></div>
-                    <div><HumansList updateName={this.updateName} deleteName={this.deleteName} changeIsChecked={this.changeIsChecked} peoples={this.getStatePeoples()} /></div>
-                </div>
+            <>
+            <div>
+                <AddNewItemForm addNewItem={this.addNewTodolist}/>
             </div>
+            <div className="App">
+                {todolist}
+            </div>
+            </>
         );
     }
 
